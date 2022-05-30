@@ -1,0 +1,51 @@
+#options-wrapper {
+  background-color: rgba(37, 37, 38, 255);
+  min-height: 100vh;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+}
+#options-title {
+  padding-left: 1vw;
+  padding-right: 2vw;
+}
+#options-indent {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid rgba(57, 57, 58, 255);
+  margin-left: 1vw;
+  padding-top: 1vh;
+}
+.option-btn {
+  background-color: rgba(37, 37, 38, 255);
+  width: 100%;
+  border: none;
+  color: white;
+  font-family: 'Inconsolata', monospace;
+  font-size: large;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 1vw;
+  text-align: start;
+}
+
+.option-btn:hover {
+  background-color: rgba(55, 55, 61, 255);
+}
+
+.icon {
+  font-family: 'Rubik Mono One', sans-serif;
+  font-size: large;
+  color: yellow;
+  padding: 0;
+  margin: 0;
+}
+#icon1 {
+  color: rgb(255, 230, 0);
+}
+#icon2 {
+  color: rgb(190, 118, 89);
+}
+#icon3 {
+  color: rgb(45, 104, 214);
+}

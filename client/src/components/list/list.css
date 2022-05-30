@@ -1,0 +1,24 @@
+#list-wrapper {
+  position: relative;
+  margin-top: 3vh;
+  padding-top: 2vh;
+  height: 100%;
+  width: 100vw;
+  padding-right: 1vw;
+  padding-left: 2vw;
+  border-top: 1px solid rgb(66, 66, 66);
+}
+.checkbox {
+  padding: 1px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  user-select: none;
+}
+.checkbox:hover {
+  border: 1px solid white;
+}
+.checked {
+  color: rgba(35, 209, 139, 255);
+}
+.unchecked {
+  color: rgba(241, 76, 76, 255);
+}
