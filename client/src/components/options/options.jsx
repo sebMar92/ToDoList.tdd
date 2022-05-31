@@ -14,8 +14,8 @@ export default function Options({ setHideCompleted, setListRender }) {
   }
   return (
     <div id="options-wrapper">
-      <div id="options-title">
-        <h1>TDD-ToDoList</h1>
+      <div id="options-title-wrapper">
+        <h1 id="options-title">ToDoList.tdd</h1>
       </div>
       <div id="options-indent">
         <button

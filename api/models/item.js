@@ -10,6 +10,7 @@ module.exports = (sequelize) => {
     name: {
       type: DataTypes.STRING,
       defaultValue: 'Description missing, click on edit to set one.',
+      allowNull: false,
     },
     completed: {
       type: DataTypes.BOOLEAN,

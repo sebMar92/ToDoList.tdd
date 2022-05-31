@@ -4,6 +4,8 @@ import { createItem } from '../../services/index.js';
 
 export default function CreateForm({ popup, popCloser, setListRender }) {
   const [text, setText] = useState('');
+  const [redBorder, setRedBorder] = useState(false);
+
   function handleInputChange(e) {
     setText(e.target.value);
   }
@@ -13,9 +15,17 @@ export default function CreateForm({ popup, popCloser, setListRender }) {
   }
   async function confirmClickHandler(e) {
     e.preventDefault();
-    await createItem(text);
-    setListRender((listRender) => !listRender);
-    popCloser();
+    if (text) {
+      await createItem(text);
+      setListRender((listRender) => !listRender);
+      setText('');
+      popCloser();
+    } else {
+      setRedBorder(true);
+      setTimeout(() => {
+        setRedBorder(false);
+      }, 600);
+    }
   }
   return (
     <div id="greyout" className={popup ? '' : 'hidden'}>
@@ -27,12 +37,13 @@ export default function CreateForm({ popup, popCloser, setListRender }) {
           </button>
         </div>
         <span>{'//'}</span>
-        <label htmlFor="description" id="descrpition-label">
+        <label htmlFor="create-input" id="descrpition-label">
           {'// type a description:'}
         </label>
         <input
           type="text"
           id="create-input"
+          className={redBorder && 'redBorder'}
           onChange={(e) => handleInputChange(e)}
           value={text}
         />

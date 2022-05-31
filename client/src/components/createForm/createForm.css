@@ -7,6 +7,7 @@
   min-width: 100vw;
   min-height: 100vh;
   user-select: none;
+  z-index: 2;
 }
 
 #form-wrapper {
@@ -22,7 +23,6 @@
   align-items: flex-start;
   color: rgba(128, 173, 107, 255);
   line-height: 1.3;
-  z-index: 2;
 }
 .form-btn {
   background-color: rgba(37, 37, 38, 255);
@@ -46,6 +46,7 @@
   width: 92%;
   justify-content: space-between;
 }
+
 #create-input {
   background-color: rgba(37, 37, 38, 255);
   width: 99%;
@@ -58,4 +59,8 @@
 #create-input:focus {
   outline: none;
   background-color: rgba(57, 57, 58, 255);
+}
+
+#create-input.redBorder {
+  border: 2px solid rgba(200, 35, 35, 0.75);
 }

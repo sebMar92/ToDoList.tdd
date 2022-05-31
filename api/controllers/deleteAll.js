@@ -1,6 +1,6 @@
 const deleteItem = require('../database_access_service/deleteItem.js');
 
-const deletion = async (req, res) => {
+const deleteOne = async (req, res) => {
   try {
     const { id } = req.params;
     const deleted = await deleteItem(id);
@@ -17,4 +17,4 @@ const deletion = async (req, res) => {
   }
 };
 
-module.exports = deletion;
+module.exports = deleteOne;

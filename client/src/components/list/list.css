@@ -8,6 +8,13 @@
   padding-left: 2vw;
   border-top: 1px solid rgb(66, 66, 66);
 }
+.list-item-container {
+  display: flex;
+  align-items: center;
+}
+.list-item-container.hidden {
+  display: none;
+}
 .checkbox {
   padding: 1px;
   border: 1px solid rgba(0, 0, 0, 0);
@@ -21,4 +28,34 @@
 }
 .unchecked {
   color: rgba(241, 76, 76, 255);
+}
+.list-item {
+  background-color: rgba(30, 30, 30, 255);
+  width: 70%;
+  border-color: transparent;
+  border-width: 2px 0px 2px 0px;
+  font-family: 'Inconsolata', monospace;
+  color: white;
+  font-size: large;
+  margin: 2px;
+}
+.editable {
+  background-color: rgba(57, 57, 58, 255);
+}
+.list-item:focus {
+  outline: none;
+  border: solid rgba(57, 57, 58, 255);
+  border-width: 2px 0px 2px 0px;
+}
+.list-buttons {
+  background-color: rgba(43, 43, 44, 255);
+  padding: auto;
+  border: none;
+  margin: 2px;
+  color: white;
+  font-family: 'Inconsolata', monospace;
+  font-size: large;
+}
+.list-buttons:hover {
+  background-color: rgba(57, 57, 58, 255);
 }

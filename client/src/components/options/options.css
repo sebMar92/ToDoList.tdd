@@ -5,9 +5,12 @@
   display: flex;
   flex-direction: column;
 }
-#options-title {
+#options-title-wrapper {
   padding-left: 1vw;
   padding-right: 2vw;
+}
+#options-title {
+  font-weight: 300;
 }
 #options-indent {
   display: flex;
