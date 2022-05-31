@@ -31,3 +31,9 @@ export const deleteItem = async (id) => {
 
   return res.data;
 };
+
+export const deleteAll = async () => {
+  const res = await axios.delete('/todos');
+
+  return res.data;
+};

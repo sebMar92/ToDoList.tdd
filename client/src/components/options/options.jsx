@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import CreateForm from '../createForm/createForm.jsx';
+import { deleteAll } from '../../services/index.js';
 import './options.css';
 
 export default function Options({ setHideCompleted, setListRender }) {
@@ -11,6 +12,11 @@ export default function Options({ setHideCompleted, setListRender }) {
   function createClickHandler(e) {
     e.preventDefault();
     setPopup(true);
+  }
+  async function deleteHandler(e) {
+    e.preventDefault();
+    await deleteAll();
+    setListRender((listRender) => !listRender);
   }
   return (
     <div id="options-wrapper">
@@ -41,11 +47,16 @@ export default function Options({ setHideCompleted, setListRender }) {
           </span>{' '}
           {hide ? 'Show completed' : 'Hide completed'}
         </button>
-        <button className="option-btn">
+        <button
+          className="option-btn"
+          onClick={(e) => {
+            deleteHandler(e);
+          }}
+        >
           <span className="icon" id="icon3">
             #
           </span>{' '}
-          Change style
+          Delete all
         </button>
       </div>
 

@@ -43,7 +43,7 @@ export default function CreateForm({ popup, popCloser, setListRender }) {
         <input
           type="text"
           id="create-input"
-          className={redBorder && 'redBorder'}
+          className={redBorder ? 'redBorder' : ''}
           onChange={(e) => handleInputChange(e)}
           value={text}
         />

@@ -4,6 +4,8 @@ const getItem = require('../database_access_service/getItem.js');
 const editItemName = require('../database_access_service/editItemName.js');
 const editItemCompletion = require('../database_access_service/editItemCompletion.js');
 const deleteItem = require('../database_access_service/deleteItem.js');
+const deleteAllItems = require('../database_access_service/deleteAllItems.js');
+
 const { conn } = require('../db.js');
 
 describe('getAllItems', () => {
@@ -131,6 +133,26 @@ describe('deleteItem', () => {
   });
   it("should return false if the item doesn't exist", async () => {
     const deleted = await deleteItem(99999);
+    expect(deleted).toBe(false);
+  });
+});
+
+describe('deleteAllItems', () => {
+  it('should be a function', () => {
+    expect(typeof deleteAllItems).toBe('function');
+  });
+  it('should delete all items from the database', async () => {
+    await deleteAllItems();
+    const remainingItems = await getAllItems();
+    expect(remainingItems).toEqual([]);
+  });
+  it('should return true if the items were deleted', async () => {
+    await createItem('test my app');
+    const deleted = await deleteAllItems();
+    expect(deleted).toBe(true);
+  });
+  it('should return false if there are no items to delete', async () => {
+    const deleted = await deleteAllItems();
     expect(deleted).toBe(false);
   });
 });

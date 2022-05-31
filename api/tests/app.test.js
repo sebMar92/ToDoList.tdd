@@ -3,7 +3,7 @@ const app = require('../app.js');
 const createItem = require('../database_access_service/createItem.js');
 const { conn } = require('../db.js');
 
-describe('GET /todos endpoint', () => {
+describe('GET /todos', () => {
   it('should return an empty array when there are no items', async () => {
     await conn.sync({ force: true });
     return request(app)
@@ -35,7 +35,7 @@ describe('GET /todos endpoint', () => {
   });
 });
 
-describe('POST /todos endpoint', () => {
+describe('POST /todos', () => {
   it('should create and return an object with a numerical id, the given name and set completed to false', () => {
     return request(app)
       .post('/todos')
@@ -57,7 +57,7 @@ describe('POST /todos endpoint', () => {
   });
 });
 
-describe('GET /todos/id endpoint', () => {
+describe('GET /todos/id', () => {
   it('should return an object with id (number), name (string) and completed (boolean)', () => {
     return request(app)
       .get('/todos/1')
@@ -78,7 +78,7 @@ describe('GET /todos/id endpoint', () => {
   });
 });
 
-describe('PUT /todos/id endpoint', () => {
+describe('PUT /todos/id', () => {
   it('should return the modified object with the corresponding id, with the name and or completed state changed', () => {
     return request(app)
       .put('/todos/1')
@@ -141,7 +141,7 @@ describe('PUT /todos/id endpoint', () => {
   });
 });
 
-describe('DELETE /todos/id endpoint', () => {
+describe('DELETE /todos/id', () => {
   it('should delete the corresponding to-do item and get a 204 status code', () => {
     return request(app)
       .delete('/todos/1')
@@ -152,5 +152,21 @@ describe('DELETE /todos/id endpoint', () => {
   });
   it('should get a 404 status code when there is not a to-do item with the asked id', () => {
     return request(app).delete('/todos/99999').expect(404);
+  });
+});
+
+describe('DELETE /todos', () => {
+  it('should delete all items and get a 204 status code', async () => {
+    await request(app).post('/todos').send({ name: 'test my app' });
+    await request(app).delete('/todos').expect(204);
+    request(app)
+      .get('/todos')
+      .expect(200)
+      .then((response) => {
+        expect(response.body).toEqual([]);
+      });
+  });
+  it('should get a 404 status code when there are no items to delete', () => {
+    return request(app).delete('/todos').expect(404);
   });
 });
