@@ -6,8 +6,8 @@ export default function List({ hideCompleted, listRender, setListRender }) {
   const [items, setItems] = useState([]);
   const [isHover, setIsHover] = useState(false);
   const [enableEdit, setEnableEdit] = useState(false);
-  const itemsRef = useRef(new Array());
-  const inputRef = useRef(new Array());
+  const itemsRef = useRef([]);
+  const inputRef = useRef([]);
 
   useEffect(() => {
     const asyncGetItems = async () => {
@@ -44,7 +44,7 @@ export default function List({ hideCompleted, listRender, setListRender }) {
   }
   return (
     <div id="list-wrapper">
-      {items.length ? (
+      {items && items.length ? (
         hideCompleted && !items.find((item) => item.completed === false) ? (
           <span>All your items are done!</span>
         ) : (
