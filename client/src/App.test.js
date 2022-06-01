@@ -18,12 +18,12 @@ describe('<Options /> component', () => {
     userEvent.click(hideShow);
     expect(screen.getByText(/show completed/i)).toBeInTheDocument();
   });
-  it('should show the CreateForm when createItem is clicked', () => {
+  it('should show the CreateForm when createItem is clicked', async () => {
     render(<Options setHideCompleted={function () {}} />);
 
     const createItem = screen.getByText(/create item/i);
     userEvent.click(createItem);
-    expect(screen.getByText(/type a description/i)).toBeInTheDocument();
+    expect(await screen.findByText(/type a description/i)).toBeInTheDocument();
   });
   it('should call -deleteAll- when the user clicks on Delete all', () => {
     const mock = jest.spyOn(services, 'deleteAll');
@@ -47,7 +47,6 @@ describe('<CreateForm /> component', () => {
   });
   it('should call -createItem- when a user types a description and clicks on confirm', () => {
     const mock = jest.spyOn(services, 'createItem');
-
     render(
       <CreateForm
         setHideCompleted={function () {}}
@@ -57,6 +56,7 @@ describe('<CreateForm /> component', () => {
     );
     const input = screen.getByText(/type a description/i);
     const confirmButton = screen.getByText(/Confirm/i);
+
     userEvent.type(input, 'Test 0');
     userEvent.click(confirmButton);
     expect(mock).toHaveBeenCalledTimes(1);
@@ -82,6 +82,7 @@ describe('<CreateForm /> component', () => {
 
 describe('<List /> component', () => {
   it("should have a sign with the words 'there's no to-do item yet' when the list is empty", () => {
+    const mock = jest.spyOn(services, 'getItems').mockResolvedValue([]);
     render(<List setListRender={function () {}} />);
     expect(screen.getByText(/there's no to-do item yet/i)).toBeInTheDocument();
   });
