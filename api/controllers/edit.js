@@ -9,7 +9,7 @@ const edit = async (req, res) => {
     const item = await getItem(id);
     if (item) {
       if (!name && !changeCompleted) {
-        return res.status(422).json({
+        return res.status(404).json({
           error:
             "The request body doesn't have either 'name' nor 'changeCompleted' in it.",
         });

@@ -9,9 +9,6 @@ const deleteAllItems = require('../database_access_service/deleteAllItems.js');
 const { conn } = require('../db.js');
 
 describe('getAllItems', () => {
-  it('should be a function', () => {
-    expect(typeof getAllItems).toBe('function');
-  });
   it('should return an empty array when there are no items', async () => {
     await conn.sync({ force: true });
     const allItems = await getAllItems();
@@ -34,9 +31,6 @@ describe('getAllItems', () => {
 });
 
 describe('createItem', () => {
-  it('should be a function', () => {
-    expect(typeof createItem).toBe('function');
-  });
   it('should create an item in the database', async () => {
     await conn.sync({ force: true });
     const previousItem = await getAllItems();
@@ -57,9 +51,6 @@ describe('createItem', () => {
 });
 
 describe('getItem', () => {
-  it('should be a function', () => {
-    expect(typeof getItem).toBe('function');
-  });
   it("should return a specific item by it's id", async () => {
     const foundItem = await getItem(1);
     expect(foundItem).toEqual(
@@ -77,9 +68,6 @@ describe('getItem', () => {
 });
 
 describe('editItemName', () => {
-  it('should be a function', () => {
-    expect(typeof editItemName).toBe('function');
-  });
   it('should edit the name of the item with the given id', async () => {
     await editItemName(1, 'keep testing my app');
     const changedItem = await getItem(1);
@@ -96,9 +84,6 @@ describe('editItemName', () => {
 });
 
 describe('editItemCompletion', () => {
-  it('should be a function', () => {
-    expect(typeof editItemCompletion).toBe('function');
-  });
   it("should change the item's completion to the opposite", async () => {
     let changedItem = await editItemCompletion(1);
     expect(changedItem.completed).toBe(true);
@@ -118,9 +103,6 @@ describe('editItemCompletion', () => {
 });
 
 describe('deleteItem', () => {
-  it('should be a function', () => {
-    expect(typeof deleteItem).toBe('function');
-  });
   it('should delete the item from the database', async () => {
     await deleteItem(1);
     const remainingItems = await getAllItems();
@@ -138,9 +120,6 @@ describe('deleteItem', () => {
 });
 
 describe('deleteAllItems', () => {
-  it('should be a function', () => {
-    expect(typeof deleteAllItems).toBe('function');
-  });
   it('should delete all items from the database', async () => {
     await deleteAllItems();
     const remainingItems = await getAllItems();

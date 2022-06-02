@@ -24,12 +24,7 @@ export default function Options({ setHideCompleted, setListRender }) {
         <h1 id="options-title">ToDoList.tdd</h1>
       </div>
       <div id="options-indent">
-        <button
-          className="option-btn"
-          onClick={(e) => {
-            createClickHandler(e);
-          }}
-        >
+        <button className="option-btn" onClick={createClickHandler}>
           <span className="icon" id="icon1">
             +
           </span>{' '}
@@ -47,12 +42,7 @@ export default function Options({ setHideCompleted, setListRender }) {
           </span>{' '}
           {hide ? 'Show completed' : 'Hide completed'}
         </button>
-        <button
-          className="option-btn"
-          onClick={(e) => {
-            deleteHandler(e);
-          }}
-        >
+        <button className="option-btn" onClick={deleteHandler}>
           <span className="icon" id="icon3">
             #
           </span>{' '}

@@ -52,8 +52,8 @@ describe('POST /todos', () => {
         );
       });
   });
-  it('should get a 422 status code when the name value type is not a string', () => {
-    return request(app).post('/todos').send({ name: 123456 }).expect(422);
+  it('should get a 404 status code when the name value type is not a string', () => {
+    return request(app).post('/todos').send({ name: 123456 }).expect(404);
   });
 });
 
@@ -127,7 +127,7 @@ describe('PUT /todos/id', () => {
         );
       });
   });
-  it('should get a 422 status code when called without name/changedCompleted in the request body', () => {
+  it('should get a 404 status code when called without name/changedCompleted in the request body', () => {
     return request(app)
       .put('/todos/99999')
       .send({ name: 'test it this way', changeCompleted: true })

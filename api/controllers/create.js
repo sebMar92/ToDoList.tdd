@@ -4,7 +4,7 @@ const create = async (req, res) => {
   try {
     const { name } = req.body;
     if (name && typeof name !== 'string') {
-      return res.status(422).json({ error: 'name value must be a string' });
+      return res.status(404).json({ error: 'name value must be a string' });
     } else {
       const createdItem = await createItem(name);
       if (!createdItem.hasOwnProperty('error')) {

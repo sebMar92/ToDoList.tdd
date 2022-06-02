@@ -61,9 +61,7 @@ export default function List({ hideCompleted, listRender, setListRender }) {
                 <span
                   id={item.id}
                   className={`checkbox ${item.completed ? 'checked' : 'unchecked'}`}
-                  onClick={(e) => {
-                    changeCompleted(e);
-                  }}
+                  onClick={changeCompleted}
                 >
                   {item.completed ? '✓' : '✗'}
                 </span>

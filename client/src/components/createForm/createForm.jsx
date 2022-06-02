@@ -29,7 +29,7 @@ export default function CreateForm({ popup, popCloser, setListRender }) {
   }
   return (
     <div id="greyout" className={popup ? '' : 'hidden'}>
-      <form id="form-wrapper">
+      <form id="form-wrapper" onSubmit={confirmClickHandler}>
         <div id="x-container">
           <span>{'//'}</span>
           <button className="form-btn" id="x-btn" onClick={cancelClickHandler}>
@@ -44,13 +44,13 @@ export default function CreateForm({ popup, popCloser, setListRender }) {
           type="text"
           id="create-input"
           className={redBorder ? 'redBorder' : ''}
-          onChange={(e) => handleInputChange(e)}
+          onChange={handleInputChange}
           value={text}
         />
         <span>{'//'}</span>
         <div id="confirm-container">
           <span>{'//'}</span>
-          <button className="form-btn" onClick={confirmClickHandler}>
+          <button type="submit" className="form-btn" onSubmit={confirmClickHandler}>
             confirm
           </button>
         </div>
